@@ -5,11 +5,9 @@ app = Flask("SuperScrapper")
 
 db = {}
 
-
 @app.route("/")
 def home():
     return render_template("home.html")
-
 
 @app.route("/report")
 def report():
