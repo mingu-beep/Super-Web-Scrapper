@@ -1,5 +1,9 @@
 from flask import Flask, render_template, request, redirect, send_file
+<<<<<<< HEAD
 from so import get_so_jobs
+=======
+from scrapper import get_jobs
+>>>>>>> 3850ab26391d09fe0ecd8b6d4306ba07aa525f2b
 from exporter import save_to_file
 
 app = Flask("SuperScrapper")
