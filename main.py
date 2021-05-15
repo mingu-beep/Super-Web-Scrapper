@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, send_file
 from so import get_so_jobs
+from wework import get_wework_jobs
+from remote import get_remote_jobs
 from exporter import save_to_file
 
 app = Flask("SuperScrapper")
@@ -19,7 +21,7 @@ def report():
         if existingJobs:
             jobs = existingJobs
         else:
-            jobs = get_so_jobs(word)
+            jobs = get_remote_jobs(word) + get_wework_jobs(word) + get_so_jobs(word)
             db[word] = jobs
     else:
         redirect("/")
