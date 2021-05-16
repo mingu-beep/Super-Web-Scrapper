@@ -2,12 +2,28 @@ import requests
 from bs4 import BeautifulSoup
 
 def extract_job(html):
-    title = html.find("span", class_= "title").get_text()
-    company = html.find("span", class_= "company").get_text()
-    location = html.find("span", class_="region").get_text()
+    title = html.find("span", class_= "title")
+    if title == None:
+      title = "None"
+    else :
+      title = title.get_text(strip=True)
+      
+    company = html.find("span", class_= "company")
+    if company == None:
+      company = "None"
+    else :
+      company = company.get_text(strip=True)
+
+    location = html.find("span", class_="region")
+    if location == None:
+      location = "None"
+    else :
+      location = location.get_text(strip=True)
+
     link = html.find_all("a")[1]["href"]
 
     return {
+        "site": "wework",
         "title": title,
         "company": company,
         "location": location,
@@ -17,7 +33,7 @@ def extract_job(html):
 def extract_jobs(url):
     jobs = []
     
-    print(f"Scrapping WEWORK Page: page")
+    print(f"Scrapping WEWORK Page")
     result = requests.get(url)
     soup = BeautifulSoup(result.text, "html.parser")
     results = soup.find_all("li", class_= "feature")

@@ -1,0 +1,94 @@
+body {
+  height: 100vh;
+  width: 100%;
+  padding: 10px;
+  font-family: "Merriweather", serif;
+  background-color: #60a3bc;
+  display: fixed;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+header > a > i {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-size: 2em;
+  color: white;
+}
+header > a > i:hover {
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+#to-first {
+  text-decoration: none;
+}
+
+a:not(#to-first) {
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  background-color: #0a3d62;
+}
+#container {
+  display: grid;
+  gap: 10px;
+  line-height: 30px;
+  grid-template-columns: repeat(4, 1fr);
+  font-size: 1.2em;
+}
+#container a {
+  padding: 5px 0;
+  width: 110px;
+}
+header {
+  display: grid;
+  place-content: center;
+}
+h1 {
+  color: white;
+  text-shadow: 1px 1px 3px black;
+  text-align: center;
+  font-size: 4em;
+  font-weight: 700;
+  font-style: italic;
+}
+h2 {
+  color:#0a3d62;
+  text-align: center;
+}
+section {
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.jobs {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+}
+.jobs span {
+  display: grid;
+  place-content: center;
+}
+.jobs a {
+  width: 200px;
+  height: 50px;
+  margin: 0 auto;
+  display: grid;
+  place-content: center;
+  border-radius: 15px;
+}
+a:not(#title):hover {
+  background-color: #82ccdd;
+  font-style: italic;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+hr {
+  width: 95%;
+}
+.header {
+  font-size: 1.2em;
+  font-weight: 400;
+  font-style: italic;
+}

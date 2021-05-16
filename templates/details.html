@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Search {{searchingBy}} From {{searchingFrom}}</title>
+	<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+	 rel="stylesheet" />
+	<link rel="stylesheet" href="{{url_for('static',filename='css/report.css')}}">
+</head>
+
+<body>
+	<header>
+		<a id="to-first" href="/"><i class="fas fa-home"></i></a>
+    <h1>Search Result</h1>
+    <h2>Result for {{searchingBy}} from {{searchingFrom}}</h2>
+		<div id="container">
+      {%if searchingFrom == "so"%}
+			<a href="/report?word={{searchingBy}}">All</a>
+			<a href="/details?word={{searchingBy}}&site=wework">Wework</a>
+			<a href="/details?word={{searchingBy}}&site=remoteok">Remoteok</a>
+			
+      {% elif searchingFrom == "wework"%}
+      <a href="/report?word={{searchingBy}}">All</a>
+			<a href="/details?word={{searchingBy}}&site=so">SO</a>
+			<a href="/details?word={{searchingBy}}&site=remoteok">Remoteok</a>
+			
+      {% elif searchingFrom == "remoteok"%}
+      <a href="/report?word={{searchingBy}}&word={{searchingBy}}">All</a>
+			<a href="/details?word={{searchingBy}}&site=so">SO</a>
+			<a href="/details?word={{searchingBy}}&site=wework">Wework</a>
+			
+      {% endif %}
+      <a href="/export?word={{searchingBy}}"><i class="fas fa-print fa-lg"></i></a>
+		</div>
+
+	</header>
+
+	<section>
+		<div class="jobs header">
+			<h4>Title</h4>
+			<h4>Company</h4>
+			<h4>Location</h4>
+			<h4>Link</h4>
+		</div>
+
+		{%for job in jobs%}
+      {% if job.site == searchingFrom%}
+		  <div class="jobs">
+			  <span>{{job.title}}</span>
+        <span>{{job.company}}</span>
+        <span>{{job.location}}</span>
+        <a href="{{job.link}}" target="_blank">Apply</a>
+      </div>
+      <hr>
+      {% endif %}
+    {% endfor %}
+  </section>
+  <script
+      src="https://kit.fontawesome.com/f97d0d047b.js"
+      crossorigin="anonymous"
+    ></script>
+</body>
+</html>

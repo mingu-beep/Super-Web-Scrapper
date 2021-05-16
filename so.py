@@ -11,11 +11,22 @@ def get_last_page(url):
 def extract_job(html):
     title = html.find("h2", {"class": "mb4"}).find("a")["title"]
     company, location = html.find("h3", class_="mb4").find_all("span", recursive=False)
-    company = company.get_text(strip=True)
-    location = location.get_text(strip=True)
+    if title == None:
+      title = "None"
+
+    if company == None:
+      company = "None"
+    else :
+      company = company.get_text(strip=True)
+
+    if location == None:
+      location = "None"
+    else :
+      location = location.get_text(strip=True)
     job_id = html["data-jobid"]
 
     return {
+        "site": "so",
         "title": title,
         "company": company,
         "location": location,
